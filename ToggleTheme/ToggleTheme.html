@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light/Dark Mode Toggle</title>
+    <style>
+      body {
+        transition: background 0.3s, color 0.3s;
+      }
+
+      .light-mode {
+        background: white;
+        color: black;
+      }
+
+      .dark-mode {
+        background: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="theme-toggle">Toggle Theme</button>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        if (currentTheme === "dark") {
+          document.body.classList.add("dark-mode");
+        } else {
+          document.body.classList.add("light-mode");
+        }
+
+        themeToggle.addEventListener("click", () => {
+          if (document.body.classList.contains("dark-mode")) {
+            document.body.classList.replace("dark-mode", "light-mode");
+            localStorage.setItem("theme", "light");
+          } else {
+            document.body.classList.replace("light-mode", "dark-mode");
+            localStorage.setItem("theme", "dark");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

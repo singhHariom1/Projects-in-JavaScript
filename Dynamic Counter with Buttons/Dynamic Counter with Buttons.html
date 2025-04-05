@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Counter with Buttons</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div
+      class="bg-white p-8 rounded-lg shadow-lg flex flex-col items-center space-y-6"
+    >
+      <button
+        id="Increment"
+        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition text-lg font-medium shadow-md"
+      >
+        Increment
+      </button>
+
+      <p
+        id="para"
+        class="text-5xl font-extrabold text-gray-900 bg-gray-200 px-6 py-3 rounded-lg shadow-inner border border-gray-300"
+      >
+        0
+      </p>
+
+      <button
+        id="Decrement"
+        class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-700 transition text-lg font-medium shadow-md"
+      >
+        Decrement
+      </button>
+    </div>
+
+    <script>
+      const counterElement = document.getElementById("para");
+      document
+        .getElementById("Increment")
+        .addEventListener("click", function () {
+          let num = parseInt(counterElement.textContent) || 0;
+          num++;
+          counterElement.textContent = num;
+        });
+
+      document
+        .getElementById("Decrement")
+        .addEventListener("click", function () {
+          let num = parseInt(counterElement.textContent);
+          if (num > 0) {
+            num--;
+            counterElement.textContent = num;
+          }
+        });
+    </script>
+  </body>
+</html>
